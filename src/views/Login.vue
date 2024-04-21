@@ -40,10 +40,11 @@ let token = ref('');
 let responseData = ref(null);
 
 function submitForm() {
-  axios.post('http://127.0.0.1:8001/api/login', {
+  const credentials = {
     email: email.value,
     password: password.value
-  })
+  }
+  client().post('/login', credentials)
     .then(response => {
       responseData.value = response.data
     })
