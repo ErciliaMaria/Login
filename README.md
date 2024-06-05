@@ -1,7 +1,8 @@
-<h1 align="center">Login</h1>
+<h1 align="center">MyLogin</h1>
 
 ## 📘 Sobre
-**Login** é um projeto de autenticação. É gerando um token válido a partir de email e senha do usuário.O token é então solicitado para verificar autenticação do usuário.
+**MyLogin** é um projeto de login e autenticação de token. É gerando um token válido a partir de email e senha do usuário.O token é então solicitado para verificar autenticação do usuário. Além disso, um componente para organização em tabela com paginação.
+
 
 ## 🔨 Ferramentas
 

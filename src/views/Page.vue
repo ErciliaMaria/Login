@@ -1,6 +1,6 @@
 <template>
-    <h1>Page</h1>
-    <p>Page to logout</p>
+    <h1>Acesso somente para pessoas cadastradas</h1>
 </template>
 <script setup>
+
 </script>

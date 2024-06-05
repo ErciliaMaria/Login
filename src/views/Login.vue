@@ -22,7 +22,7 @@
         <v-text-field v-model="token" label="Enter your token" required></v-text-field>
       </v-card>
 
-      <v-btn @click="authorizeWithToken" color="primary" :disable="!token">
+      <v-btn @click="authorizeWithToken" color="primary" :disable="!token" to="page">
         Authenticate
       </v-btn>
 
@@ -58,13 +58,13 @@ function authorizeWithToken() {
     .then(response => {
       responseData.value = response.data;
   })
-    .catch(error => {
+    .catch(error => { 
       console.log(error)
       })
 }
 function client(){
     const client = axios.create({
-      baseURL : 'http://127.0.0.1:8001/api'
+      baseURL : 'http://127.0.0.1:8000/api'
     })
     client.defaults.headers.common['Authorization'] = 'Bearer ' + token.value
     client.defaults.withCredentials = true

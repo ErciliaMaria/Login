@@ -5,10 +5,12 @@ import vuetify from './plugins/vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import Login from "./views/Login.vue";
 import Page from "./views/Page.vue";
+import Table from "./views/Table.vue"
 
 const routes = [
     { path: '/login', component:Login },
     { path: '/page', component: Page},
+    { path: '/table', component: Table},
 ];
 const router = createRouter({
     history: createWebHistory(),
