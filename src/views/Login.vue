@@ -9,7 +9,7 @@
 
           <br />
 
-          <v-btn color="success" size="large" type="submit" variant="elevated" block>
+          <v-btn @click="submitForm" color="success" size="large" type="submit" variant="elevated" block>
             Sign In
           </v-btn>
         </v-form>
