@@ -1,4 +1,49 @@
+<script setup>
+import {RouterView} from 'vue-router';
+import axios from 'axios'
+import { ref } from 'vue'
+
+let email = ref('');
+let password = ref('');
+let token = ref('');
+let responseData = ref(null);
+
+function submitForm() {
+  const credentials = {
+    email: email.value,
+    password: password.value
+  }
+  client().post('/login', credentials)
+    .then(response => {
+      responseData.value = response.data
+    })
+    .catch(error => {
+      console.log(error)
+    })
+}
+function authorizeWithToken() {
+  client().get('/test')
+    .then(response => {
+      responseData.value = response.data;
+  })
+    .catch(error => { 
+      console.log(error)
+      })
+}
+function client(){
+    const client = axios.create({
+      baseURL : 'http://127.0.0.1:8000/api'
+    })
+    client.defaults.headers.common['Authorization'] = 'Bearer ' + token.value
+    client.defaults.withCredentials = true
+    client.defaults.withXSRFToken = true
+    return client
+}
+</script>
+
+
 <template>
+  <RouterView />
   <div id="app">
     <v-sheet class="bg-indigo-lighten-4 pa-12" rounded>
       <v-card class="mx-auto px-6 py-8" max-width="344">
@@ -30,45 +75,3 @@
   </div>
 </template>
 
-<script setup>
-import axios from 'axios'
-import { ref } from 'vue'
-
-let email = ref('');
-let password = ref('');
-let token = ref('');
-let responseData = ref(null);
-
-function submitForm() {
-  const credentials = {
-    email: email.value,
-    password: password.value
-  }
-  client().post('/login', credentials)
-    .then(response => {
-      responseData.value = response.data
-    })
-    .catch(error => {
-      console.log(error)
-    })
-}
-function authorizeWithToken() {
-  console.log(token.value)
-  client().get('/test')
-    .then(response => {
-      responseData.value = response.data;
-  })
-    .catch(error => { 
-      console.log(error)
-      })
-}
-function client(){
-    const client = axios.create({
-      baseURL : 'http://127.0.0.1:8000/api'
-    })
-    client.defaults.headers.common['Authorization'] = 'Bearer ' + token.value
-    client.defaults.withCredentials = true
-    client.defaults.withXSRFToken = true
-    return client
-}
-</script>
